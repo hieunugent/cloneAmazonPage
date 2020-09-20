@@ -5,7 +5,12 @@ export const initialState={
           price:12.99,
           rating:5,
           image:"https://www.creativindie.com/wp-content/uploads/2012/07/stock-image-site-pinterest-graphic-533x800.jpg",},],
-};
+    user:null,
+        };
+
+
+export const getBasketTotal = (basket) => basket?.reduce((amount, item)=> item.price +amount,0);    
+
 const reducer = (state, action) => {
   
     switch (action.type){
