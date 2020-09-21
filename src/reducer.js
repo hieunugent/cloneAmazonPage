@@ -1,10 +1,6 @@
 /* eslint-disable default-case */
 export const initialState={
-    basket:[ {id:"12324512",
-          title:"the best stock image",
-          price:12.99,
-          rating:5,
-          image:"https://www.creativindie.com/wp-content/uploads/2012/07/stock-image-site-pinterest-graphic-533x800.jpg",},],
+    basket:[ ],
     user:null,
         };
 
@@ -14,6 +10,11 @@ export const getBasketTotal = (basket) => basket?.reduce((amount, item)=> item.p
 const reducer = (state, action) => {
   
     switch (action.type){
+        case "SET_USER":
+            return {
+                ...state,
+                user:action.user,
+            }
         case 'ADD_TO_BASKET':
             //logic add item to basket
             return {
