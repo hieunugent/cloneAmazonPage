@@ -20,7 +20,7 @@ function Checkout() {
           </div>
         ) : (
           <div>
-            <h2 className="checkout__title"> Hello {user?.email.substring(0, user?.email.indexOf('@'))} </h2>
+            <h2 className="checkout__title"> Hello {!user ? 'Guest' : user?.email.substring(0, user?.email.indexOf('@'))} </h2>
             {/* liat out all of the check out producy */}
             {basket.map((item) => (
               <CheckoutProduct

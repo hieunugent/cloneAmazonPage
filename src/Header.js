@@ -33,7 +33,12 @@ function Header() {
       <div className="header__nav">
         <Link to={!user && "/login"} className="header__link">
           <div onClick={login} className="header__option">
-            <span className="header__optionLineOne">Hello {user?.email}</span>
+            <span className="header__optionLineOne">
+              Hello{" "}
+              {!user
+                ? "Guest"
+                : user?.email.substring(0, user?.email.indexOf("@"))}
+            </span>
             <span className="header__optionLineTwo">
               {!user ? "Sign In" : "Sign Out"}
             </span>
