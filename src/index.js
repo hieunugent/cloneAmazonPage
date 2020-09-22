@@ -5,8 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { StateProvider } from "./StateProvider";
 import reducer, { initialState } from './reducer';
-require("dotenv").config();
-console.log(process.env.FIREBASE_API);
+
 ReactDOM.render(
   
   <React.StrictMode>

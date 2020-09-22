@@ -21,6 +21,8 @@ function Header() {
           src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
           alt=""
         />
+        {/* https://m.media-amazon.com/images/G/01/AdProductsWebsite/long-term-assets/ad-specs/firetv_inline_example_text_0427._CB1198675309_.jpg */}
+        {/* https://www.webinterpret.com/wp-content/uploads/2020/03/amazon-global-ecommerce-cart.png */}
       </Link>
 
       <div className="header__search">
@@ -32,7 +34,9 @@ function Header() {
         <Link to={!user && "/login"} className="header__link">
           <div onClick={login} className="header__option">
             <span className="header__optionLineOne">Hello {user?.email}</span>
-            <span className="header__optionLineTwo">{!user ? "Sign In":"Sign Out"}</span>
+            <span className="header__optionLineTwo">
+              {!user ? "Sign In" : "Sign Out"}
+            </span>
           </div>
         </Link>
         <Link to="/" className="header__link">
@@ -52,7 +56,9 @@ function Header() {
       <Link to="/checkout" className="header__link">
         <div className="header__optionBasket">
           <ShoppingBasketIcon />
-          <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
+          <span className="header__optionLineTwo header__basketCount">
+            {basket?.length}
+          </span>
         </div>
       </Link>
     </nav>
