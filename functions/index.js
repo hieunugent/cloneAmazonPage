@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const { response } = require('express');
 const stripe = require("stripe")(
-  "sk_test_51HURqIGScuVPJsj6gitoCAscpUJrFejlbhDWIVHIiE1mGfBpQEF3Tc63Z5YNFg2gsgcVU0DVta4r5QHA29uWsXbj00YkrCJX23"
+ 
 );
 //API 
 // app config 
