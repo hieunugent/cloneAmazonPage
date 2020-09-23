@@ -15,7 +15,7 @@ app.use(express.json());
 //API ROOT
 app.get('/', (req, res)=> res.status(200).send('hello world'))
 
-app.post('/payments/create', async(req, res)=> {
+app.post('/payments/create', async(req, res) => {
     const total = req.query.total;
     console.log('Payment Request recieve BOOM!!! for this amount >>>', total);
 
