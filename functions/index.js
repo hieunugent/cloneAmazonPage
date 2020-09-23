@@ -1,10 +1,10 @@
 const functions = require('firebase-functions');
 const express = require("express");
-
+require("dotenv").config();
 const cors = require("cors");
 const { response } = require('express');
 const stripe = require("stripe")(
- 
+  process.env.TEST_KEY
 );
 //API 
 // app config 
@@ -21,10 +21,10 @@ app.post('/payments/create', async(req, res)=> {
 
     const paymentIntent = await stripe.paymentIntents.create({
         amount:total, // subunit 
-        current:"usd",
+        currency:"usd",
     });
     res.status(201).send({
-        clientSecret: paymentIntent.clientSecret,
+        clientSecret: paymentIntent.client_secret,
     })
 })
 //- listen command

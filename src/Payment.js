@@ -17,7 +17,7 @@ function Payment() {
   const [processing, setProcessing] = useState("");
 
   const [error, setError] = useState(null);
-  const [disable, setDisable] = useState(true);
+  const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState(true);
   useEffect(()=>{
     // generate the special stripe secret which
@@ -45,14 +45,17 @@ function Payment() {
     }).then(({paymentIntent})=> {
         // paymentIntent = payment confirmation
         setSucceeded(true)
-        setError(false);
-        setProcessing(false)
-        history.replaceState('/orders')
+        setError(null);
+        setProcessing(false);
+
+        history.replace('/orders')
     })
   };
-  const handleChange = (e) => {
+  const handleChange = (event) => {
     // listen for changes in the cardElement
     // and display any errors as the customer types their car detail
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message: "");
   };
   return (
     <div className="payment">
@@ -99,7 +102,7 @@ function Payment() {
           </div>
           <div className="payment__details">
             <form onSubmit={handleSubmit}>
-              <CardElement />
+              <CardElement onChange={handleChange}/>
               <div className="payment__priceContainer">
                 <CurrencyFormat
                   renderText={(value) => <h3>OrderTotal: {value}</h3>}
@@ -109,7 +112,7 @@ function Payment() {
                   thousandSeparator={true}
                   prefix={"$"}
                 />
-                <button disabled={processing || disable || succeeded}>
+                <button disabled={processing || disabled || succeeded}>
                   <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
                 </button>
               </div>
